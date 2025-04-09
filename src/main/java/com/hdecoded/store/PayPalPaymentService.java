@@ -1,9 +1,9 @@
 package com.hdecoded.store;
 
-public class StripePaymentService implements PaymentService {
+public class PayPalPaymentService implements PaymentService {
     @Override
     public void processPayment(double amount) {
-        System.out.println("STRIPE PAYMENT SERVICE");
+        System.out.println("PAYPAL PAYMENT SERVICE");
         System.out.println("Amount: " + amount);
     }
 }
