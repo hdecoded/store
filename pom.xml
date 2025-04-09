@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hdecoded</groupId>
-    <artifactId>spring-boot-store2</artifactId>
+    <artifactId>store</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-store2</name>
-    <description>spring-boot-store2</description>
+    <name>store</name>
+    <description>Simple Store Application using spring boot</description>
     <url/>
     <licenses>
         <license/>
