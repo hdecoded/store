@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: store
+  datasource:
+    url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
+    username: root
+    password: 'Password1!'
+stripe:
+  apiUrl: https://api.stripe.com
+  timeout: 1000
+  enabled: true
+  currencies: USD,EUR,GBP
+store:
+  payProvider: stripe
+email:
+  host: http://localhost
+  port: 8080
