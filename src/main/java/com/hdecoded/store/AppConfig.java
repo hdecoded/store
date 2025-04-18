@@ -21,11 +21,8 @@ public class AppConfig {
     }
 
     @Bean
-    @Scope("prototype")
     public OrderService orderService(){
-        if(paymentProvider.equals("stripe"))
-            return new OrderService(stripe());
-        else if(paymentProvider.equals("paypal"))
+        if(paymentProvider.equals("paypal"))
             return new OrderService(paypal());
         return new OrderService(stripe());
     }
