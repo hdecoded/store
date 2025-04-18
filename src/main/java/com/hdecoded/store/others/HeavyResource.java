@@ -1,4 +1,4 @@
-package com.hdecoded.store;
+package com.hdecoded.store.others;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
