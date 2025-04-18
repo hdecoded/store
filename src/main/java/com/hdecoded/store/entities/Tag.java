@@ -4,25 +4,20 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "users")
-public class User {
+@Table(name = "tags")
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "password")
-    private String password;
+    private Long id;
 
     @Column(name = "name")
     private String name;
+
 }
