@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("stripe")
-@Primary
+//@Service("stripe")
+//@Primary
 public class StripePaymentService implements PaymentService {
 
     @Value("${stripe.apiUrl}")
@@ -19,7 +19,7 @@ public class StripePaymentService implements PaymentService {
     @Value("${stripe.timeout:3000}")
     private int timeout;
 
-    @Value("${stripe.supported-currencies}")
+    @Value("${stripe.currencies}")
     private List<String> supportedCurrencies;
 
     @Override
