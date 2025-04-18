@@ -8,3 +8,6 @@ stripe:
   currencies: USD,EUR,GBP
 store:
   payProvider: stripe
+email:
+  host: http://localhost
+  port: 8080
