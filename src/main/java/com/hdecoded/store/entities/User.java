@@ -45,6 +45,9 @@ public class User {
     @Builder.Default
     private Set<Tag> tags = new HashSet<>();
 
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
     public void addAddress(Address address) {
         addresses.add(address);
         address.setUser(this);
@@ -63,6 +66,14 @@ public class User {
     public void removeTag(String tagName) {
         var tag = new Tag(tagName);
         tags.remove(tag);
+    }
+
+    public void addProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public void removeProfile() {
+        this.profile = null;
     }
 
 }
