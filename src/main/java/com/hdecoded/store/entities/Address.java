@@ -6,6 +6,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -28,5 +29,10 @@ public class Address {
 
     @Column(name = "zip")
     private int zip;
+
+    @ManyToOne
+    @ToString.Exclude
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

@@ -3,9 +3,13 @@ package com.hdecoded.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -25,4 +29,18 @@ public class User {
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    private List<Address> addresses = new ArrayList<>();
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+    }
+
 }
