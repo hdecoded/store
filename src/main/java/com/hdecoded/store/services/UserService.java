@@ -76,4 +76,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void deleteRelatedEntities() {
+
+        userRepository.deleteById(2L);
+    }
+
 }

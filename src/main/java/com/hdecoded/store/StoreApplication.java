@@ -11,7 +11,7 @@ public class StoreApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         UserService userService = (UserService) context.getBean("userService");
-        userService.relatedEntities();
+        userService.deleteRelatedEntities();
     }
 
 }

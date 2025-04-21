@@ -32,7 +32,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
 
@@ -53,7 +53,7 @@ public class User {
     )
     private Set<Product> wishlist = new HashSet<>();
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
     public void addAddress(Address address) {
