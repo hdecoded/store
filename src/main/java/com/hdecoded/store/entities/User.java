@@ -32,7 +32,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
 
@@ -63,6 +63,7 @@ public class User {
 
     public void removeAddress(Address address) {
         addresses.remove(address);
+        address.setUser(null);
     }
 
     public void addTag(String tagName) {
