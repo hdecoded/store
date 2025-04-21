@@ -1,17 +1,14 @@
 package com.hdecoded.store.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Entity
-@ToString
 @Getter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Setter
+@Entity
 @Table(name = "products")
 public class Product {
 
@@ -23,11 +20,13 @@ public class Product {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
+    private String description;
+
     @Column(name = "price")
     private BigDecimal price;
 
     @ManyToOne
-    @ToString.Exclude
     @JoinColumn(name = "category_id")
     private Category category;
 
