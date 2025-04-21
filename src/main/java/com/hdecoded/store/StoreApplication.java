@@ -12,7 +12,8 @@ public class StoreApplication {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         UserService userService = (UserService) context.getBean("userService");
 //        userService.showEntityStates();
-        userService.showRelatedEntities();
+//        userService.showRelatedEntities();
+        userService.fetchAddress();
     }
 
 }

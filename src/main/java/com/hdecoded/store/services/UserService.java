@@ -1,6 +1,7 @@
 package com.hdecoded.store.services;
 
 import com.hdecoded.store.entities.User;
+import com.hdecoded.store.repositories.AddressRepository;
 import com.hdecoded.store.repositories.ProfileRepository;
 import com.hdecoded.store.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
@@ -15,6 +16,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final EntityManager entityManager;
     private final ProfileRepository profileRepository;
+    private final AddressRepository addressRepository;
 
     @Transactional
     public void showEntityStates() {
@@ -46,6 +48,13 @@ public class UserService {
         var profile = profileRepository.findById(1L).orElseThrow();
         System.out.println(profile);
         System.out.println(profile.getUser().getEmail());
+    }
+
+    @Transactional
+    public void fetchAddress() {
+        var address = addressRepository.findById(1L).orElseThrow();
+        System.out.println(address);
+        System.out.println(address.getUser().getEmail());
     }
 
 }
