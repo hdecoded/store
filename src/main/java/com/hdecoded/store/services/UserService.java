@@ -1,10 +1,12 @@
 package com.hdecoded.store.services;
 
 import com.hdecoded.store.entities.User;
+import com.hdecoded.store.repositories.ProfileRepository;
 import com.hdecoded.store.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -12,8 +14,9 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final EntityManager entityManager;
+    private final ProfileRepository profileRepository;
 
-    //    @Transactional
+    @Transactional
     public void showEntityStates() {
         var user = User.builder()
                 .name("hdecoded")
@@ -36,9 +39,13 @@ public class UserService {
         }
     }
 
+    @Transactional
     public void showRelatedEntities() {
-        var user = userRepository.findById(1L).orElseThrow();
-        System.out.println(user.getEmail());
+//        var user = userRepository.findById(1L).orElseThrow();
+//        System.out.println(user.getEmail());
+        var profile = profileRepository.findById(1L).orElseThrow();
+        System.out.println(profile);
+        System.out.println(profile.getUser().getEmail());
     }
 
 }
