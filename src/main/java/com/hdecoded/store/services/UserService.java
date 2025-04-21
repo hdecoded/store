@@ -3,7 +3,6 @@ package com.hdecoded.store.services;
 import com.hdecoded.store.entities.User;
 import com.hdecoded.store.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final EntityManager entityManager;
 
-    @Transactional
+    //    @Transactional
     public void showEntityStates() {
         var user = User.builder()
                 .name("hdecoded")
@@ -35,6 +34,11 @@ public class UserService {
         } else {
             System.out.println("Transient / Detached");
         }
+    }
+
+    public void showRelatedEntities() {
+        var user = userRepository.findById(1L).orElseThrow();
+        System.out.println(user.getEmail());
     }
 
 }
