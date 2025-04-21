@@ -45,7 +45,7 @@ public class User {
     @Builder.Default
     private Set<Tag> tags = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(
             name = "wishlist",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -83,6 +83,10 @@ public class User {
 
     public void removeProfile() {
         this.profile = null;
+    }
+
+    public void addFavProduct(Product product) {
+        this.wishlist.add(product);
     }
 
 }
