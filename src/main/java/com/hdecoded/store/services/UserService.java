@@ -1,5 +1,6 @@
 package com.hdecoded.store.services;
 
+import com.hdecoded.store.entities.Address;
 import com.hdecoded.store.entities.User;
 import com.hdecoded.store.repositories.AddressRepository;
 import com.hdecoded.store.repositories.ProfileRepository;
@@ -55,6 +56,24 @@ public class UserService {
         var address = addressRepository.findById(1L).orElseThrow();
         System.out.println(address);
         System.out.println(address.getUser().getEmail());
+    }
+
+    public void relatedEntities() {
+        var user = User.builder()
+                .name("hdecoded")
+                .email("hd@hdecoded.com")
+                .password("hdecoded")
+                .build();
+
+        var address = Address.builder()
+                .zip(123)
+                .street("street")
+                .city("city")
+                .state("state")
+                .build();
+
+        user.addAddress(address);
+        userRepository.save(user);
     }
 
 }
