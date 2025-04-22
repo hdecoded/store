@@ -13,7 +13,7 @@ public class StoreApplication {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         ProductService productService = (ProductService) context.getBean("productService");
         UserService userService = (UserService) context.getBean("userService");
-        userService.fetchAllUsers();
+        productService.findProductsByPrice();
     }
 
 }

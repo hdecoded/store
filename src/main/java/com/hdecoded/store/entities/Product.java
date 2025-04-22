@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @Builder
 @Table(name = "products")
 @NoArgsConstructor
+@ToString
 @AllArgsConstructor
 public class Product {
 

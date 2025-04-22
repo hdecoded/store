@@ -70,4 +70,10 @@ public class ProductService {
         products2.forEach(System.out::println);
     }
 
+    @Transactional
+    public void findProductsByPrice() {
+        var products = productRepository.findProductsStoredProc(BigDecimal.valueOf(100), BigDecimal.valueOf(1000));
+        products.forEach(System.out::println);
+    }
+
 }

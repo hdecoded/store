@@ -12,6 +12,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Table(name = "categories")
 public class Category {
 
@@ -24,6 +25,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @ToString.Exclude
     private Set<Product> products = new LinkedHashSet<>();
 
     public Category(byte id) {

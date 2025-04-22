@@ -6,6 +6,7 @@ import com.hdecoded.store.entities.Category;
 import com.hdecoded.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -75,6 +76,9 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     // join and left join
     @Query("select p from Product p left join p.category where p.price between :min and :max order by p.name")
     List<Product> findProducts2(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+
+    @Procedure("findProductsByPrice")
+    List<Product> findProductsStoredProc(BigDecimal min, BigDecimal max);
 
     // Aggregate function count, sum and others
     @Query("select count(*) from Product p where p.price between :min and :max")
