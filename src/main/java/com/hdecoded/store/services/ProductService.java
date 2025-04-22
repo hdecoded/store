@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -54,10 +52,6 @@ public class ProductService {
         var products = productRepository.findAll();
         products.forEach(user::addFavProduct);
         userRepository.save(user);
-    }
-
-    public Set<Product> getAllProducts() {
-        return new HashSet<>(productRepository.findAll());
     }
 
     public void deleteProduct() {
