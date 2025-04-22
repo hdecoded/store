@@ -84,4 +84,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void fetchUser() {
+        var user = userRepository.findByEmail("hd@hdecoded.com").orElseThrow();
+        System.out.println(user);
+    }
+
 }

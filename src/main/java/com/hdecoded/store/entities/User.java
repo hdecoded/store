@@ -11,7 +11,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -87,6 +86,13 @@ public class User {
 
     public void addFavProduct(Product product) {
         this.wishlist.add(product);
+    }
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "email = " + email + ", " +
+                "name = " + name + ")";
     }
 
 }
