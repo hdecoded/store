@@ -44,4 +44,16 @@ public class ProductCriteriaRepositoryImpl implements ProductCriteriaRepository 
         return entityManager.createQuery(cq).getResultList();
     }
 
+    @Override
+    public List<Product> findProductByCategory(Long categoryId) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<Product> root = cq.from(Product.class);
+
+        Predicate categoryPredicate = cb.equal(root.get("category").get("id"), categoryId);
+        cq.select(root).where(categoryPredicate);
+
+        return entityManager.createQuery(cq).getResultList();
+    }
+
 }

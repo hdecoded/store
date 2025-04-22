@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.math.BigDecimal;
-
 @SpringBootApplication
 public class StoreApplication {
 
@@ -15,7 +13,8 @@ public class StoreApplication {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         ProductService productService = (ProductService) context.getBean("productService");
         UserService userService = (UserService) context.getBean("userService");
-        userService.fetchProductsBySpecifications("p", BigDecimal.valueOf(1), BigDecimal.valueOf(200));
+//        userService.findProdcutByCategoryCriteria();
+        userService.fetchProductsBySpecifications(null, null, null, 2L);
     }
 
 }

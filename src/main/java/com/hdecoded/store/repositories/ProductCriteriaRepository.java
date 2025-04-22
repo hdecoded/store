@@ -9,4 +9,6 @@ public interface ProductCriteriaRepository {
 
     List<Product> findProductByCriteria(String name, BigDecimal minPrice, BigDecimal maxPrice);
 
+    List<Product> findProductByCategory(Long categoryId);
+
 }

@@ -135,7 +135,12 @@ public class UserService {
         products.forEach(System.out::println);
     }
 
-    public void fetchProductsBySpecifications(String name, BigDecimal minPrice, BigDecimal maxPrice) {
+    public void findProdcutByCategoryCriteria() {
+        var products = productRepository.findProductByCategory(1L);
+        products.forEach(System.out::println);
+    }
+
+    public void fetchProductsBySpecifications(String name, BigDecimal minPrice, BigDecimal maxPrice, Long categoryId) {
         Specification<Product> spec = Specification.where(null);
 
         if (name != null) {
@@ -146,6 +151,9 @@ public class UserService {
         }
         if (maxPrice != null) {
             spec = spec.and(ProductSpec.hasPriceLessThanOrEqualTo(maxPrice));
+        }
+        if (categoryId != null) {
+            spec = spec.and(ProductSpec.hasCategoryId(categoryId));
         }
 
         productRepository.findAll(spec).forEach(System.out::println);

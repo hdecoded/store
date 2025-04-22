@@ -19,4 +19,8 @@ public class ProductSpec {
         return (root, query, cb) -> cb.lessThanOrEqualTo(root.get("price"), price);
     }
 
+    public static Specification<Product> hasCategoryId(Long categoryId) {
+        return (root, query, cb) -> cb.equal(root.get("category").get("id"), categoryId);
+    }
+
 }
