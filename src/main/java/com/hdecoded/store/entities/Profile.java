@@ -24,13 +24,13 @@ public class Profile {
     private String bio;
 
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "date_of_birth")
-    private LocalDate date_of_birth;
+    private LocalDate dateOfBirth;
 
     @Column(name = "loyalty_points")
-    private Integer loyalty_points;
+    private Integer loyaltyPoints;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")

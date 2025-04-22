@@ -100,4 +100,12 @@ public class UserService {
         );
     }
 
+    @Transactional
+    public void fetchLoyalUsers() {
+        var loyalUsers = userRepository.findLoyalUsers(2);
+        loyalUsers.forEach(u -> {
+            System.out.println(u.getId() + ": " + u.getEmail());
+        });
+    }
+
 }

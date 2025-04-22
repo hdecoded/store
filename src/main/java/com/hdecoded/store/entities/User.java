@@ -52,8 +52,8 @@ public class User {
     )
     private Set<Product> wishlist = new HashSet<>();
 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-//    private Profile profile;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Profile profile;
 
     public void addAddress(Address address) {
         addresses.add(address);
@@ -87,6 +87,7 @@ public class User {
     public void addFavProduct(Product product) {
         this.wishlist.add(product);
     }
+
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
