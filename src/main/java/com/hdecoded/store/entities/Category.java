@@ -26,4 +26,8 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private Set<Product> products = new LinkedHashSet<>();
 
+    public Category(byte id) {
+        this.id = id;
+    }
+
 }

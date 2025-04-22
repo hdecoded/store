@@ -1,5 +1,8 @@
 package com.hdecoded.store.repositories;
 
+import com.hdecoded.store.dtos.ProductSummary;
+import com.hdecoded.store.dtos.ProductSummaryDTO;
+import com.hdecoded.store.entities.Category;
 import com.hdecoded.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -81,5 +84,11 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(@Param("categoryId") Byte categoryId, @Param("newPrice") BigDecimal newPrice);
+
+    @Query("select p.id, p.name from Product p where p.category = :category")
+    List<ProductSummary> findByCategory(@Param("category") Category category);
+
+    @Query("select new com.hdecoded.store.dtos.ProductSummaryDTO(p.id, p.name) from Product p where p.category = :category")
+    List<ProductSummaryDTO> findByCategoryDTO(@Param("category") Category category);
 
 }

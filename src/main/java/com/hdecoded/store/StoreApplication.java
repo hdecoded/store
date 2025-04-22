@@ -11,7 +11,7 @@ public class StoreApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         ProductService productService = (ProductService) context.getBean("productService");
-        productService.updateProductPrice();
+        productService.fetchProducts();
     }
 
 }
